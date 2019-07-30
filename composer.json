@@ -1,0 +1,19 @@
+{
+    "description": "",
+    "type": "neos-package",
+    "name": "punktde/sylius-cart",
+    "require": {
+        "neos/flow": "*",
+        "punktde/sylius-api": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "PunktDe\\Sylius\\Cart\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "PunktDe.Sylius.Cart"
+        }
+    }
+}
