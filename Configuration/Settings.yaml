@@ -1,0 +1,4 @@
+PunktDe:
+  Sylius:
+    Cart:
+      anonymousCustomer: anonymousCartHolder@exampleshop.de
