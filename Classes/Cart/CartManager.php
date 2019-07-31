@@ -12,14 +12,13 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Log\PsrSystemLoggerInterface;
 use Neos\Flow\ObjectManagement\Exception\UnknownObjectException;
 use Neos\Flow\ObjectManagement\ObjectManager;
+use PunktDe\Polyfill\LogEnvironment\Utility\LogEnvironment;
 use PunktDe\Sylius\Api\Dto\CartItem;
+use PunktDe\Sylius\Api\Dto\FrontendUser;
 use PunktDe\Sylius\Api\Exception\SyliusApiException;
 use PunktDe\Sylius\Api\Resource\CartItemResource;
 use PunktDe\Sylius\Api\Resource\CartResource;
-use PunktDe\Vvw\MyVvw\Domain\Model\User;
-use PunktDe\Vvw\MyVvw\Domain\Service\UserService;
 use PunktDe\Sylius\Api\Dto\Cart as SyliusCart;
-use PunktDe\Vvw\NeosHotfixes\Utility\LogEnvironment;
 
 /**
  * @Flow\Scope("singleton")
@@ -27,10 +26,9 @@ use PunktDe\Vvw\NeosHotfixes\Utility\LogEnvironment;
 class CartManager
 {
     /**
-     * @Flow\Inject
-     * @var UserService
+     * @var FrontendUser
      */
-    protected $userService;
+    protected $frontendUser;
 
     /**
      * @Flow\Inject
@@ -61,11 +59,6 @@ class CartManager
     protected $anonymousCustomerMail;
 
     /**
-     * @var User
-     */
-    protected $frontendUser;
-
-    /**
      * @var Cart
      */
     protected $currentCart;
@@ -76,12 +69,6 @@ class CartManager
      */
     protected $logger;
 
-
-    public function initializeObject()
-    {
-        $this->frontendUser = $this->userService->getLoggedInFrontendUser();
-    }
-
     /**
      * @return bool
      * @throws UnknownObjectException
@@ -90,6 +77,14 @@ class CartManager
     public function hasCart(): bool
     {
         return $this->sessionCartExists() && $this->getCart() instanceof Cart;
+    }
+
+    /**
+     * @param FrontendUser $frontendUser
+     */
+    public function setFrontendUser(FrontendUser $frontendUser): void
+    {
+        $this->frontendUser = $frontendUser;
     }
 
     /**
@@ -299,7 +294,7 @@ class CartManager
      */
     private function isUserLoggedIn(): bool
     {
-        return $this->frontendUser instanceof User;
+        return $this->frontendUser instanceof FrontendUser && $this->frontendUser->isLoggedIn();
     }
 
     /**
@@ -307,7 +302,7 @@ class CartManager
      */
     private function getLoggedInUserEmail(): ?string
     {
-        return $this->frontendUser instanceof User ? $this->frontendUser->getEmail() : null;
+        return $this->frontendUser instanceof FrontendUser ? $this->frontendUser->getEmail() : '';
     }
 
     /**

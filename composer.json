@@ -4,7 +4,8 @@
     "name": "punktde/sylius-cart",
     "require": {
         "neos/flow": "*",
-        "punktde/sylius-api": "*"
+        "punktde/sylius-api": "*",
+        "punktde/polyfill-logenvironment": "*"
     },
     "autoload": {
         "psr-4": {
