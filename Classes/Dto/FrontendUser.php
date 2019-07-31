@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace PunktDe\Sylius\Api\Dto;
+namespace PunktDe\Sylius\Cart\Dto;
 
 /*
  *  (c) 2019 punkt.de GmbH - Karlsruhe, Germany - http://punkt.de
