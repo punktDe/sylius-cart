@@ -14,7 +14,7 @@ use Neos\Flow\ObjectManagement\Exception\UnknownObjectException;
 use Neos\Flow\ObjectManagement\ObjectManager;
 use PunktDe\Polyfill\LogEnvironment\Utility\LogEnvironment;
 use PunktDe\Sylius\Api\Dto\CartItem;
-use PunktDe\Sylius\Api\Dto\FrontendUser;
+use PunktDe\Sylius\Cart\Dto\FrontendUser;
 use PunktDe\Sylius\Api\Exception\SyliusApiException;
 use PunktDe\Sylius\Api\Resource\CartItemResource;
 use PunktDe\Sylius\Api\Resource\CartResource;
@@ -56,7 +56,7 @@ class CartManager
      * @Flow\InjectConfiguration(path="anonymousCustomer")
      * @var string
      */
-    protected $anonymousCustomerMail;
+    protected $anonymousCustomerMail = 'anonymousCartHolder@exampleshop.de';
 
     /**
      * @var Cart
@@ -218,8 +218,7 @@ class CartManager
     {
         $userEmail = $this->getLoggedInUserEmail() ?? $this->anonymousCustomerMail;
 
-        $syliusCart = (new SyliusCart())
-            ->setCustomer($userEmail);
+        $syliusCart = (new SyliusCart())->setCustomer($userEmail);
 
         /** @var SyliusCart $syliusCart */
         $syliusCart = $this->getCartResource()->add($syliusCart);
@@ -302,7 +301,7 @@ class CartManager
      */
     private function getLoggedInUserEmail(): ?string
     {
-        return $this->frontendUser instanceof FrontendUser ? $this->frontendUser->getEmail() : '';
+        return $this->frontendUser instanceof FrontendUser ? $this->frontendUser->getEmail() : null;
     }
 
     /**
