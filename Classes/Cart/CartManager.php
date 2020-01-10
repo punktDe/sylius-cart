@@ -12,7 +12,7 @@ use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Log\PsrSystemLoggerInterface;
 use Neos\Flow\ObjectManagement\Exception\UnknownObjectException;
 use Neos\Flow\ObjectManagement\ObjectManager;
-use PunktDe\Polyfill\LogEnvironment\Utility\LogEnvironment;
+use Neos\Flow\Log\Utility\LogEnvironment;
 use PunktDe\Sylius\Api\Dto\CartItem;
 use PunktDe\Sylius\Cart\Dto\FrontendUser;
 use PunktDe\Sylius\Api\Exception\SyliusApiException;
