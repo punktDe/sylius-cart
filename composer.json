@@ -2,6 +2,7 @@
     "description": "",
     "type": "neos-package",
     "name": "punktde/sylius-cart",
+    "license": "MIT",
     "require": {
         "neos/flow": "*",
         "punktde/sylius-api": "*",
