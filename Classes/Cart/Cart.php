@@ -10,7 +10,7 @@ namespace PunktDe\Sylius\Cart\Cart;
 
 use Neos\Flow\Annotations as Flow;
 use Neos\Flow\Log\PsrSystemLoggerInterface;
-use PunktDe\Polyfill\LogEnvironment\Utility\LogEnvironment;
+use Neos\Flow\Log\Utility\LogEnvironment;
 use PunktDe\Sylius\Api\Dto\Cart as SyliusCart;
 use PunktDe\Sylius\Api\Dto\CartItem;
 use PunktDe\Sylius\Api\Exception\SyliusApiException;

@@ -4,9 +4,8 @@
     "name": "punktde/sylius-cart",
     "license": "MIT",
     "require": {
-        "neos/flow": "*",
-        "punktde/sylius-api": "*",
-        "punktde/polyfill-logenvironment": "*"
+        "neos/flow": ">=5.1",
+        "punktde/sylius-api": "*"
     },
     "autoload": {
         "psr-4": {
