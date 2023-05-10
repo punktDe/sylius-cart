@@ -9,7 +9,7 @@ namespace PunktDe\Sylius\Cart\Cart;
  */
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Log\PsrSystemLoggerInterface;
+use Psr\Log\LoggerInterface;
 use Neos\Flow\ObjectManagement\Exception\UnknownObjectException;
 use Neos\Flow\ObjectManagement\ObjectManager;
 use Neos\Flow\Log\Utility\LogEnvironment;
@@ -65,7 +65,7 @@ class CartManager
 
     /**
      * @Flow\Inject
-     * @var PsrSystemLoggerInterface
+     * @var LoggerInterface
      */
     protected $logger;
 
