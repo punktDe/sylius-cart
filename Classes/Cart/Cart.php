@@ -9,7 +9,7 @@ namespace PunktDe\Sylius\Cart\Cart;
  */
 
 use Neos\Flow\Annotations as Flow;
-use Neos\Flow\Log\PsrSystemLoggerInterface;
+use Psr\Log\LoggerInterface;
 use Neos\Flow\Log\Utility\LogEnvironment;
 use PunktDe\Sylius\Api\Dto\Cart as SyliusCart;
 use PunktDe\Sylius\Api\Dto\CartItem;
@@ -57,7 +57,7 @@ class Cart
 
     /**
      * @Flow\Inject
-     * @var PsrSystemLoggerInterface
+     * @var LoggerInterface
      */
     protected $logger;
 
